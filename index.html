@@ -1,241 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darsura Wiki</title>
+
 <style>
-.roblox-wiki{
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  margin:0;
+  padding:0;
   background:#07070b;
   color:#fff;
   font-family:Arial, Helvetica, sans-serif;
-  padding:0;
-  margin:0;
 }
 
-.rw-wrap{
-  max-width:1150px;
-  margin:auto;
-  padding:22px;
+body{
+  overflow-x:hidden;
 }
 
-.rw-hero{
-  padding:45px 20px 30px;
-  text-align:center;
+.darsura-site{
+  min-height:100vh;
   background:
-    radial-gradient(circle at top,#38206b55,transparent 35%),
-    linear-gradient(180deg,#11111c,#07070b);
-  border-bottom:1px solid #ffffff14;
+    radial-gradient(circle at top left, rgba(168,85,247,.20), transparent 35%),
+    radial-gradient(circle at top right, rgba(255,216,77,.13), transparent 32%),
+    linear-gradient(180deg,#090912,#050507);
 }
 
-.rw-hero h1{
-  font-size:42px;
-  margin:0;
+.hero{
+  padding:42px 18px 30px;
+  text-align:center;
+  border-bottom:1px solid rgba(255,255,255,.10);
+  background:
+    linear-gradient(180deg,rgba(18,18,32,.96),rgba(7,7,11,.96));
+}
+
+.hero-kicker{
+  color:#ffd84d;
+  font-weight:700;
+  letter-spacing:.16em;
+  font-size:12px;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  margin:10px 0 8px;
+  font-size:46px;
+  line-height:1;
   letter-spacing:.5px;
+  text-shadow:0 0 24px rgba(168,85,247,.45);
 }
 
-.rw-hero p{
-  color:#c9c9d8;
+.hero p{
+  max-width:760px;
+  margin:0 auto;
+  color:#d6d6e7;
+  line-height:1.55;
   font-size:17px;
-  margin:12px auto 0;
-  max-width:720px;
 }
 
-.rw-badges{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:10px;
+.badges{
   margin-top:18px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
 }
 
-.rw-badge{
-  background:#181824;
-  border:1px solid #ffffff18;
-  padding:8px 12px;
+.badge{
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.06);
   border-radius:999px;
-  color:#ddd;
+  padding:9px 12px;
+  color:#ededf7;
   font-size:13px;
 }
 
-.rw-section{
-  margin:26px 0;
-  padding:22px;
-  background:#101018;
-  border:1px solid #ffffff12;
+.wrap{
+  width:100%;
+  max-width:1180px;
+  margin:0 auto;
+  padding:18px;
+}
+
+.nav-box{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(7,7,11,.92);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.10);
   border-radius:18px;
-  box-shadow:0 12px 35px #00000055;
-}
-
-.rw-section h2{
-  margin:0 0 12px;
-  font-size:25px;
-}
-
-.rw-section p{
-  color:#cfcfde;
-  line-height:1.55;
-}
-
-.rw-controls{
+  padding:10px;
+  margin:14px 0 22px;
   display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin:15px 0;
+  gap:8px;
+  overflow-x:auto;
 }
 
-.rw-search{
-  flex:1;
-  min-width:220px;
-  padding:13px;
-  background:#08080d;
-  color:white;
-  border:1px solid #ffffff18;
+.nav-box a{
+  color:#fff;
+  text-decoration:none;
+  white-space:nowrap;
+  background:#161622;
+  border:1px solid rgba(255,255,255,.10);
+  padding:10px 12px;
   border-radius:12px;
+  font-size:14px;
 }
 
-.rw-btn{
-  border:1px solid #ffffff18;
-  background:#191927;
-  color:white;
-  border-radius:12px;
-  padding:12px 14px;
-  cursor:pointer;
+.section{
+  margin:22px 0;
+  background:rgba(16,16,25,.96);
+  border:1px solid rgba(255,255,255,.11);
+  border-radius:22px;
+  padding:22px;
+  box-shadow:0 18px 38px rgba(0,0,0,.42);
 }
 
-.rw-btn:hover{
-  background:#26263a;
+.section-header{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  align-items:flex-end;
+  margin-bottom:14px;
 }
 
-.rw-grid{
+.section h2{
+  margin:0;
+  font-size:27px;
+}
+
+.section-sub{
+  color:#c9c9d8;
+  line-height:1.55;
+  margin:8px 0 0;
+}
+
+.controls{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(185px,1fr));
+  gap:12px;
+  margin:16px 0;
+}
+
+.search{
+  width:100%;
+  border:1px solid rgba(255,255,255,.15);
+  background:#090910;
+  color:#fff;
+  border-radius:14px;
+  padding:15px;
+  font-size:16px;
+  outline:none;
+}
+
+.filter-group{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.filter-title{
+  color:#aaaabd;
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  margin:4px 0 0;
+}
+
+.btn{
+  border:1px solid rgba(255,255,255,.14);
+  background:#181826;
+  color:#fff;
+  border-radius:13px;
+  padding:11px 13px;
+  cursor:pointer;
+  font-weight:700;
+  font-size:14px;
+}
+
+.btn:hover,.btn.active{
+  background:#2a2a40;
+  border-color:#ffd84d;
+  color:#ffd84d;
+}
+
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
   gap:14px;
 }
 
-.rw-card{
-  background:linear-gradient(180deg,#171722,#0d0d13);
-  border:1px solid #ffffff12;
-  border-radius:16px;
+.char-card{
+  min-height:132px;
+  border-radius:18px;
   padding:16px;
   cursor:pointer;
-  transition:.2s;
-  min-height:105px;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(180deg,#191926,#0e0e15);
+  border:1px solid rgba(255,255,255,.12);
+  transition:.18s;
 }
 
-.rw-card:hover{
+.char-card:hover{
   transform:translateY(-4px);
-  box-shadow:0 12px 30px #00000088;
+  box-shadow:0 16px 35px rgba(0,0,0,.55);
 }
 
-.rw-card h3{
+.char-card h3{
   margin:0 0 8px;
-  font-size:20px;
+  font-size:21px;
 }
 
-.rw-card small{
-  color:#bdbdd0;
+.char-card small{
+  color:#c8c8d8;
+  line-height:1.4;
 }
 
-.common{border-left:5px solid #d8d8d8;}
-.rare{border-left:5px solid #3498ff; box-shadow:0 0 16px #3498ff22;}
-.epic{border-left:5px solid #a855f7; box-shadow:0 0 16px #a855f722;}
-.god{border-left:5px solid #ffd84d; box-shadow:0 0 24px #ffd84d33;}
-
-.rw-tag{
+.card-use{
   display:inline-block;
-  margin-top:10px;
-  padding:5px 9px;
+  margin-top:12px;
   border-radius:999px;
+  padding:6px 9px;
+  background:rgba(255,255,255,.08);
+  color:#f1f1fb;
   font-size:12px;
-  background:#ffffff12;
+  font-weight:700;
 }
 
-.rw-info{
+.common{border-left:5px solid #dedede;}
+.rare{border-left:5px solid #3498ff;box-shadow:0 0 18px rgba(52,152,255,.13);}
+.epic{border-left:5px solid #a855f7;box-shadow:0 0 18px rgba(168,85,247,.15);}
+.god{border-left:5px solid #ffd84d;box-shadow:0 0 22px rgba(255,216,77,.20);}
+
+.common .rarity-word{color:#e5e5e5;}
+.rare .rarity-word{color:#60a5fa;}
+.epic .rarity-word{color:#c084fc;}
+.god .rarity-word{color:#ffd84d;}
+
+.info-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
   gap:14px;
 }
 
-.rw-box{
+.info-box{
   background:#090910;
-  border:1px solid #ffffff12;
-  border-radius:14px;
-  padding:15px;
+  border:1px solid rgba(255,255,255,.11);
+  border-radius:17px;
+  padding:16px;
 }
 
-.rw-box h3{
+.info-box h3{
   margin:0 0 8px;
+  font-size:19px;
 }
 
-.rw-table{
+.info-box p{
+  margin:0;
+  color:#d0d0dc;
+  line-height:1.55;
+}
+
+.table-wrap{
+  overflow-x:auto;
+}
+
+table{
   width:100%;
   border-collapse:collapse;
-  overflow:hidden;
-  border-radius:14px;
+  min-width:520px;
 }
 
-.rw-table th,.rw-table td{
-  padding:12px;
-  border-bottom:1px solid #ffffff12;
-  text-align:left;
-}
-
-.rw-table th{
-  background:#191927;
-}
-
-.rw-faq-q{
-  background:#191927;
+th,td{
   padding:13px;
-  border-radius:12px;
+  border-bottom:1px solid rgba(255,255,255,.10);
+  text-align:left;
+  color:#dcdcea;
+}
+
+th{
+  background:#191927;
+  color:#fff;
+}
+
+.faq-item{
+  border:1px solid rgba(255,255,255,.11);
+  border-radius:15px;
   margin-top:10px;
+  overflow:hidden;
+  background:#0b0b12;
+}
+
+.faq-q{
+  padding:15px;
   cursor:pointer;
+  font-weight:800;
+  background:#181826;
 }
 
-.rw-faq-a{
+.faq-a{
   display:none;
-  padding:12px;
-  color:#cfcfde;
+  padding:15px;
+  color:#d0d0dc;
+  line-height:1.55;
 }
 
-/* POPUP MODAL */
-.rw-modal{
+.modal{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.72);
-  z-index:999999;
+  z-index:99999;
+  background:rgba(0,0,0,.78);
   padding:18px;
   overflow:auto;
 }
 
-.rw-modal-card{
-  max-width:520px;
-  margin:55px auto;
-  background:linear-gradient(145deg,#11111c,#07070d);
-  border:1px solid rgba(255,255,255,.14);
-  border-radius:22px;
+.modal-card{
+  max-width:620px;
+  margin:42px auto;
+  background:linear-gradient(145deg,#12121d,#07070d);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:24px;
   padding:22px;
   color:#f5f5ff;
-  box-shadow:0 0 35px rgba(0,0,0,.9);
+  box-shadow:0 0 45px rgba(0,0,0,.95);
 }
 
-.rw-modal-card.god{
-  border-color:#ffd84d;
-  box-shadow:0 0 28px rgba(255,216,77,.45);
-}
+.modal-card.god{border-color:#ffd84d;box-shadow:0 0 34px rgba(255,216,77,.38);}
+.modal-card.epic{border-color:#a855f7;box-shadow:0 0 34px rgba(168,85,247,.32);}
+.modal-card.rare{border-color:#3498ff;box-shadow:0 0 34px rgba(52,152,255,.28);}
+.modal-card.common{border-color:#d8d8d8;}
 
-.rw-modal-card.epic{
-  border-color:#a855f7;
-  box-shadow:0 0 28px rgba(168,85,247,.35);
-}
-
-.rw-modal-card.rare{
-  border-color:#3498ff;
-  box-shadow:0 0 28px rgba(52,152,255,.35);
-}
-
-.rw-modal-card.common{
-  border-color:#d8d8d8;
-}
-
-.rw-close{
+.close{
   float:right;
   font-size:32px;
   cursor:pointer;
@@ -243,411 +344,775 @@
   line-height:1;
 }
 
-.rw-modal-title{
-  font-size:30px;
-  margin:0 0 5px;
-  color:#fff;
+.modal-title{
+  margin:0 0 4px;
+  font-size:31px;
 }
 
-.rw-modal-card.god .rw-modal-title{color:#ffd84d;}
-.rw-modal-card.epic .rw-modal-title{color:#c084fc;}
-.rw-modal-card.rare .rw-modal-title{color:#60a5fa;}
-
-.rw-modal-rarity{
-  font-weight:bold;
+.modal-meta{
+  font-weight:800;
   text-transform:uppercase;
-  margin-bottom:4px;
+  margin-bottom:12px;
 }
 
-.rw-modal-card.god .rw-modal-rarity{color:#ffd84d;}
-.rw-modal-card.epic .rw-modal-rarity{color:#c084fc;}
-.rw-modal-card.rare .rw-modal-rarity{color:#60a5fa;}
-.rw-modal-card.common .rw-modal-rarity{color:#e5e5e5;}
-
-.rw-modal-strength{
-  font-size:18px;
-  margin-bottom:16px;
-}
-
-.rw-modal-strength b{
-  color:#ffd84d;
-}
-
-.rw-detail{
-  background:linear-gradient(180deg,#171722,#0b0b11);
+.modal-detail{
+  background:linear-gradient(180deg,#181827,#0b0b12);
   border:1px solid rgba(255,255,255,.12);
-  border-radius:15px;
+  border-radius:16px;
   padding:16px;
-  margin-top:14px;
+  margin-top:13px;
 }
 
-.rw-detail h3{
-  margin:0 0 10px;
+.modal-detail h3{
+  margin:0 0 9px;
   font-size:18px;
-  letter-spacing:.4px;
 }
 
-.rw-detail p{
+.modal-detail p{
   margin:0;
-  color:#e2e2ee;
-  line-height:1.55;
+  color:#e1e1ee;
+  line-height:1.58;
 }
 
-.rw-passive-title{color:#c084fc;}
-.rw-path-title{color:#64e28a;}
-.rw-used-title{color:#60a5fa;}
-.rw-style-title{color:#fb7185;}
+.purple{color:#c084fc;}
+.green{color:#65e58c;}
+.blue{color:#60a5fa;}
+.red{color:#fb7185;}
+.gold{color:#ffd84d;}
 
-.rw-pill{
-  display:inline-block;
-  padding:7px 10px;
-  border-radius:9px;
-  background:#2a2108;
-  border:1px solid #ffd84d;
-  color:#ffd84d;
-  font-weight:bold;
-  font-size:13px;
-  margin-top:4px;
-}
-
-.rw-modal-close-btn{
+.close-btn{
   width:100%;
-  margin-top:18px;
+  margin-top:17px;
   padding:14px;
-  border-radius:13px;
+  border-radius:14px;
   border:1px solid #ffd84d;
-  background:linear-gradient(90deg,#241c05,#151008);
+  background:linear-gradient(90deg,#251c05,#151008);
   color:#ffd84d;
-  font-weight:bold;
+  font-weight:900;
   cursor:pointer;
 }
 
-@media(max-width:600px){
-  .rw-hero h1{font-size:32px;}
-  .rw-wrap{padding:14px;}
+.empty{
+  color:#c9c9d8;
+  padding:20px;
+  text-align:center;
+  border:1px dashed rgba(255,255,255,.16);
+  border-radius:16px;
 }
-  @media(max-width:700px){
-  .rw-wrap{
+
+@media(max-width:760px){
+  .wrap{
     padding:12px;
   }
 
-  .rw-hero{
+  .hero{
     padding:34px 14px 24px;
   }
 
-  .rw-hero h1{
-    font-size:34px;
+  .hero h1{
+    font-size:36px;
   }
 
-  .rw-hero p{
+  .hero p{
     font-size:16px;
   }
 
-  .rw-section{
+  .section{
     padding:16px;
-    margin:18px 0;
+    border-radius:18px;
   }
 
-  .rw-grid{
-    grid-template-columns:1fr !important;
-    gap:14px;
+  .section-header{
+    display:block;
   }
 
-  .rw-card{
+  .card-grid{
+    grid-template-columns:1fr;
+  }
+
+  .char-card{
     min-height:auto;
     padding:18px;
   }
 
-  .rw-card h3{
+  .char-card h3{
     font-size:24px;
   }
 
-  .rw-card small{
+  .char-card small{
     font-size:15px;
   }
 
-  .rw-tag{
-    font-size:13px;
-    padding:7px 10px;
-  }
-
-  .rw-btn{
+  .btn{
     flex:1;
-    font-size:15px;
+    padding:12px 10px;
   }
 
-  .rw-search{
-    width:100%;
-    flex-basis:100%;
-    font-size:16px;
-  }
-
-  .rw-info{
-    grid-template-columns:1fr;
-  }
-
-  .rw-modal-card{
-    margin:25px auto;
+  .modal-card{
+    margin:20px auto;
     padding:18px;
+  }
+
+  .modal-title{
+    font-size:27px;
   }
 }
 </style>
+</head>
 
-<div class="roblox-wiki">
-  <div class="rw-hero">
+<body>
+<div class="darsura-site">
+
+  <header class="hero">
+    <div class="hero-kicker">Roblox Anime Card Rolling Game</div>
     <h1>Darsura Wiki</h1>
-    <p>Roll. Reveal. Upgrade. Become unstoppable. Build your strongest anime card and climb the power ladder.</p>
-    <div class="rw-badges">
-      <div class="rw-badge">Roll Cost / 100 Coins</div>
-      <div class="rw-badge">Roll 5 / 500 Coins</div>
-      <div class="rw-badge">Reveal Passive / 400 Coins</div>
-      <div class="rw-badge">Mobile Friendly Wiki</div>
+    <p>Roll cards, build your strength, chase rare passives, trash unwanted cards, farm coins, and climb the power ladder.</p>
+    <div class="badges">
+      <div class="badge">Roll / 100 Coins</div>
+      <div class="badge">Roll 5 / 500 Coins</div>
+      <div class="badge">Reveal Passive / 400 Coins</div>
+      <div class="badge">Mobile Friendly Wiki</div>
     </div>
-  </div>
+  </header>
 
-  <div class="rw-wrap">
-    <div class="rw-section">
-      <h2>Character Wiki</h2>
-      <p>Search or filter every card in the game. Cards show only the name, rarity, and base strength. Tap a card to see the full passive explanation and the best way to use that character.</p>
+  <main class="wrap">
 
-      <div class="rw-controls">
-        <input class="rw-search" id="rwSearch" placeholder="Search character name..." onkeyup="rwSearchCards()">
-        <button class="rw-btn" onclick="rwFilter('all')">All</button>
-        <button class="rw-btn" onclick="rwFilter('common')">Common</button>
-        <button class="rw-btn" onclick="rwFilter('rare')">Rare</button>
-        <button class="rw-btn" onclick="rwFilter('epic')">Epic</button>
-        <button class="rw-btn" onclick="rwFilter('god')">God</button>
+    <nav class="nav-box">
+      <a href="#cards">Cards</a>
+      <a href="#rarities">Rarities</a>
+      <a href="#how">How to Play</a>
+      <a href="#duplicates">Duplicates</a>
+      <a href="#systems">Systems</a>
+      <a href="#faq">FAQ</a>
+      <a href="#tips">Tips</a>
+      <a href="#updates">Updates</a>
+    </nav>
+
+    <section class="section" id="cards">
+      <div class="section-header">
+        <div>
+          <h2>Character Wiki</h2>
+          <p class="section-sub">Search, filter, and tap a card to see its passive, best use, and suggested playstyle.</p>
+        </div>
       </div>
 
-      <div class="rw-grid" id="rwCards"></div>
-    </div>
+      <div class="controls">
+        <input class="search" id="searchInput" placeholder="Search character name..." onkeyup="renderCards()">
 
-    <div class="rw-section">
+        <div>
+          <div class="filter-title">Rarity Filter</div>
+          <div class="filter-group" id="rarityButtons">
+            <button class="btn active" onclick="setRarity('all', this)">All</button>
+            <button class="btn" onclick="setRarity('common', this)">Common</button>
+            <button class="btn" onclick="setRarity('rare', this)">Rare</button>
+            <button class="btn" onclick="setRarity('epic', this)">Epic</button>
+            <button class="btn" onclick="setRarity('god', this)">God</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="filter-title">Best Used For</div>
+          <div class="filter-group" id="useButtons">
+            <button class="btn active" onclick="setUse('all', this)">All Uses</button>
+            <button class="btn" onclick="setUse('coin', this)">Coin Farming</button>
+            <button class="btn" onclick="setUse('strength', this)">Strength Farming</button>
+            <button class="btn" onclick="setUse('roll', this)">Roll Control</button>
+            <button class="btn" onclick="setUse('duplicate', this)">Duplicate Jackpot</button>
+            <button class="btn" onclick="setUse('rng', this)">RNG Burst</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-grid" id="cardGrid"></div>
+    </section>
+
+    <section class="section" id="rarities">
       <h2>Rarity Guide</h2>
-      <div class="rw-info">
-        <div class="rw-box common"><h3>Common / Gray White</h3><p>Starter cards. Usually weaker, but some have useful early-game passives.</p></div>
-        <div class="rw-box rare"><h3>Rare / Blue</h3><p>Better base strength and stronger utility passives for coin gain or faster growth.</p></div>
-        <div class="rw-box epic"><h3>Epic / Purple</h3><p>High base strength cards. Great stepping stones toward late-game power.</p></div>
-        <div class="rw-box god"><h3>God / Gold</h3><p>Top-tier cards with the strongest base strength and best long-term scaling.</p></div>
+      <p class="section-sub">Each rarity has its own color and base strength range. Higher rarity cards usually have stronger passives, but some Common and Rare cards are still useful for farming.</p>
+      <div class="info-grid" style="margin-top:14px;">
+        <div class="info-box common"><h3>Common / Gray White</h3><p>Early-game cards. Good for learning the game, farming coins, or building starter strength.</p></div>
+        <div class="info-box rare"><h3>Rare / Blue</h3><p>Mid-tier cards with stronger economy, roll-control, and strength passives.</p></div>
+        <div class="info-box epic"><h3>Epic / Purple</h3><p>Strong cards that can shape your build with bigger rewards or risky tradeoffs.</p></div>
+        <div class="info-box god"><h3>God / Gold</h3><p>Top-tier cards with the strongest scaling, jackpot effects, and late-game power.</p></div>
       </div>
-    </div>
+    </section>
 
-    <div class="rw-section">
+    <section class="section" id="how">
       <h2>How to Play</h2>
-      <div class="rw-info">
-        <div class="rw-box"><h3>Rolling</h3><p>Spend coins to roll cards. A single roll costs 100 coins. Roll 5 costs 500 coins.</p></div>
-        <div class="rw-box"><h3>Keep</h3><p>Keeping a card equips it. If it is the same card you already have equipped, it upgrades your strength.</p></div>
-        <div class="rw-box"><h3>Dust Button</h3><p>Dust means trashing the rolled card. Dust is not a saved currency or value.</p></div>
-        <div class="rw-box"><h3>Reveal</h3><p>Some passives are hidden as ???. Revealing costs 400 coins and saves permanently.</p></div>
+      <div class="info-grid" style="margin-top:14px;">
+        <div class="info-box"><h3>1 / Roll Cards</h3><p>Spend 100 coins to roll one card or 500 coins to roll five cards. Cards are picked based on rarity odds.</p></div>
+        <div class="info-box"><h3>2 / Keep or Trash</h3><p>Keeping equips the card. Trashing uses the dust button and triggers your equipped card’s passive.</p></div>
+        <div class="info-box"><h3>3 / Build Strength</h3><p>Your strength is your main power stat. You gain it from trash effects, passives, and duplicate jackpot upgrades.</p></div>
+        <div class="info-box"><h3>4 / Farm Coins</h3><p>Coins let you roll more. Economy cards help you stay rolling longer and chase better cards.</p></div>
       </div>
-    </div>
+    </section>
 
-    <div class="rw-section">
+    <section class="section" id="duplicates">
       <h2>Duplicate Upgrade Guide</h2>
-      <table class="rw-table">
-        <tr><th>Rarity</th><th>Duplicate Strength Boost</th></tr>
-        <tr><td>Common</td><td>+5 Strength</td></tr>
-        <tr><td>Rare</td><td>+10 Strength</td></tr>
-        <tr><td>Epic</td><td>+70 Strength</td></tr>
-        <tr><td>God</td><td>+300 Strength</td></tr>
-      </table>
-    </div>
-
-    <div class="rw-section">
-      <h2>Progression Tips</h2>
-      <div class="rw-info">
-        <div class="rw-box"><h3>Early Game</h3><p>Use Common or Rare cards that help with coins or repeated trashing.</p></div>
-        <div class="rw-box"><h3>Mid Game</h3><p>Start chasing Rare and Epic cards. Upgrade duplicates and reveal useful hidden passives.</p></div>
-        <div class="rw-box"><h3>Late Game</h3><p>Focus on God cards and duplicate upgrades. God duplicates give the biggest strength jumps.</p></div>
+      <p class="section-sub">A duplicate means rolling the exact same card you already have equipped. This is meant to be a rare jackpot path, not the main way to progress.</p>
+      <div class="table-wrap" style="margin-top:14px;">
+        <table>
+          <tr><th>Rarity</th><th>Normal Duplicate Boost</th><th>Design Role</th></tr>
+          <tr><td>Common</td><td>+5 Strength</td><td>Small lucky bonus</td></tr>
+          <tr><td>Rare</td><td>+10 Strength</td><td>Rare bonus spike</td></tr>
+          <tr><td>Epic</td><td>+70 Strength</td><td>Big mid-game jackpot</td></tr>
+          <tr><td>God</td><td>+300 Strength</td><td>Huge late-game jackpot</td></tr>
+        </table>
       </div>
-    </div>
+    </section>
 
-    <div class="rw-section">
-      <h2>Save System</h2>
-      <p>The game saves your coins, equipped card, equipped strength, and permanently revealed passives.</p>
-    </div>
+    <section class="section" id="systems">
+      <h2>Main Systems</h2>
+      <div class="info-grid" style="margin-top:14px;">
+        <div class="info-box"><h3>Dust Button / Trash</h3><p>Dust is not a currency. It means pressing the trash/dust button on a rolled card to activate effects.</p></div>
+        <div class="info-box"><h3>Hidden Passives</h3><p>Some passives may show as ??? until revealed. Revealing costs 400 coins and saves permanently.</p></div>
+        <div class="info-box"><h3>Overhead Display</h3><p>Your equipped card appears above your character with its name, image, rarity color, and power.</p></div>
+        <div class="info-box"><h3>Save System</h3><p>The game saves coins, equipped card, strength, and revealed passives.</p></div>
+      </div>
+    </section>
 
-    <div class="rw-section">
+    <section class="section" id="faq">
       <h2>FAQ</h2>
-      <div class="rw-faq-q" onclick="rwToggle(this)">Is dust a currency?</div>
-      <div class="rw-faq-a">No. Dust is just the action of trashing a card with the dust button.</div>
 
-      <div class="rw-faq-q" onclick="rwToggle(this)">How do I get stronger?</div>
-      <div class="rw-faq-a">Keep stronger cards, upgrade duplicates, and use passives that give strength when you trash cards.</div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is dust a currency?</div>
+        <div class="faq-a">No. Dust just means trashing a rolled card with the dust button. The real saved values are coins, strength, equipped card, and revealed passives.</div>
+      </div>
 
-      <div class="rw-faq-q" onclick="rwToggle(this)">What should I spend coins on?</div>
-      <div class="rw-faq-a">Early on, use coins for rolls. Once you have a good card, revealing hidden passives becomes more useful.</div>
-    </div>
-  </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What is the strongest non-God card?</div>
+        <div class="faq-a">Rimuru is one of the strongest non-God strength farmers because +40 strength per trash is simple and consistent. Madara and Ryuk are very strong for coin farming.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Are duplicates supposed to be a good path?</div>
+        <div class="faq-a">No. Duplicates are supposed to be rare jackpot moments. Most players progress through trash effects, coin farming, roll control, and passives.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Why would I use coin farming cards?</div>
+        <div class="faq-a">More coins means more rolls. More rolls means more chances at stronger cards, better passives, and rare God pulls.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What should beginners focus on?</div>
+        <div class="faq-a">Beginners should focus on cards that give coins, refunds, or reliable strength. Nami, Chopper, Dimple, Naruto, and Rimuru are easy early-game options.</div>
+      </div>
+    </section>
+
+    <section class="section" id="tips">
+      <h2>Progression Tips</h2>
+      <div class="info-grid" style="margin-top:14px;">
+        <div class="info-box"><h3>Early Game</h3><p>Use consistent cards. Dimple, Naruto, Nami, Chopper, and Rimuru are easy to understand and useful early.</p></div>
+        <div class="info-box"><h3>Mid Game</h3><p>Start choosing a build. Coin farming, strength farming, roll control, RNG burst, and jackpot duplicates all feel different.</p></div>
+        <div class="info-box"><h3>Late Game</h3><p>God cards define late game. Mob scales over time, Veldora has huge God duplicate potential, and Griffith rewards risky high-rarity trashing.</p></div>
+        <div class="info-box"><h3>Smart Play</h3><p>Do not switch cards randomly. Pick a card that supports what you are currently trying to do: farm coins, build strength, or hunt better cards.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="updates">
+      <h2>Future Updates</h2>
+      <p class="section-sub">Possible future updates could include bosses, quests, card images, limited-time cards, leaderboards, trading, clans, raid events, and a full in-game index.</p>
+    </section>
+
+  </main>
 </div>
 
-<div class="rw-modal" id="rwModal">
-  <div class="rw-modal-card" id="rwModalCard">
-    <span class="rw-close" onclick="rwClose()">×</span>
-    <h2 class="rw-modal-title" id="rwModalName"></h2>
-    <div id="rwModalBody"></div>
+<div class="modal" id="cardModal">
+  <div class="modal-card" id="modalCard">
+    <span class="close" onclick="closeModal()">×</span>
+    <h2 class="modal-title" id="modalName"></h2>
+    <div id="modalBody"></div>
   </div>
 </div>
 
 <script>
-const rwCharacters = [
-{name:"Mai",rarity:"common",strength:10,passive:"No passive.",path:"Basic starter card. Use early if you have nothing better, then replace quickly."},
-{name:"Naruto",rarity:"common",strength:10,passive:"Every 5 times you trash a card using the dust button, Naruto gives a bonus of +25 strength. This rewards players who roll often and trash weak cards instead of keeping them.",path:"Good early leveling card. Use Naruto if you plan to roll a lot and trash most weak cards for steady strength growth."},
-{name:"Luffy",rarity:"common",strength:10,passive:"Every 10 times you trash a card, Luffy gives +100 strength. The bonus takes longer to trigger than Naruto, but the reward is bigger.",path:"Good for patient early progression. Best if you are saving coins and doing longer rolling sessions."},
-{name:"Saitama",rarity:"common",strength:10,passive:"Whenever you trash a card, Saitama has a 10% chance to give an extra +50 strength bonus.",path:"Best for players who like lucky bursts. Not as consistent, but can level fast if luck hits."},
-{name:"Tanjiro",rarity:"common",strength:10,passive:"No passive.",path:"Starter card only. Replace when you get a card with a useful passive."},
-{name:"Reigen",rarity:"common",strength:10,passive:"When you trash a card, Reigen has a 20% chance to give coins instead of the normal trashing benefit.",path:"Good for coin gathering. Use if you want more rolls faster instead of focusing only on strength."},
-{name:"Dimple",rarity:"common",strength:10,passive:"Every time you trash a card, Dimple gives +10 strength.",path:"Very simple and consistent early leveling card. Good for players who want reliable growth."},
-{name:"Usopp",rarity:"common",strength:10,passive:"Usopp has weaker trashing value, but duplicate upgrades are stronger. This means he is better when you keep finding more copies of him.",path:"Use if you want a duplicate-focused build. Weak at first, but better if you roll Usopp repeatedly."},
-{name:"Chopper",rarity:"common",strength:10,passive:"Chopper has a 30% chance to refund a roll. This helps stretch your coins further over time.",path:"Great early coin-saving card. Use Chopper if you want to roll longer without running out of coins fast."},
-{name:"Brook",rarity:"common",strength:10,passive:"Brook is a fast attacker style card. His value is focused around speed rather than big single bonuses.",path:"Use if your game adds attack speed or combat systems. For pure strength farming, replace later."},
-{name:"Franky",rarity:"common",strength:10,passive:"Franky is a heavy hitter style card. He is meant to feel slower but stronger when attacking.",path:"Good if you want a combat-style card. Replace later with stronger rarity cards."},
-{name:"Nami",rarity:"common",strength:10,passive:"When you trash cards, Nami helps turn that action into coins. She is designed around money gain instead of direct power.",path:"One of the best early coin farming cards. Use Nami when your main goal is getting enough coins to roll more."},
-{name:"Rimuru",rarity:"common",strength:10,passive:"Every time you trash a card, Rimuru gives +40 strength. This is a strong early-game trashing bonus.",path:"Very strong Common for leveling. Use Rimuru if you want fast strength growth before getting Rare or Epic cards."},
+const characters = [
+  {
+    name:"Mai",
+    rarity:"common",
+    strength:10,
+    use:"coin",
+    passive:"Common trash gives 25% coins back. Rare or higher trash gives bonus coins.",
+    explanation:"Mai is an early economy card. She helps recover coins when you trash cards, especially when you are trashing lots of Commons. Rare or higher trash actions give better coin value, so she rewards active rolling.",
+    path:"Use Mai when you want to keep rolling longer instead of focusing only on strength. She is best early when coins matter more than raw power."
+  },
+  {
+    name:"Naruto",
+    rarity:"common",
+    strength:10,
+    use:"strength",
+    passive:"Every 5 dust gives +25 strength.",
+    explanation:"Every 5 times you trash a card, Naruto gives a strength bonus. This makes him consistent and easy to understand.",
+    path:"Use Naruto as a beginner strength card. He is good when you are trashing a lot of weak cards and want steady progress."
+  },
+  {
+    name:"Luffy",
+    rarity:"common",
+    strength:10,
+    use:"strength",
+    passive:"Every 10 dust gives +100 strength.",
+    explanation:"Luffy rewards longer trashing sessions. His bonus takes longer to activate, but the payout is bigger than Naruto’s.",
+    path:"Use Luffy if you plan to roll and trash many cards at once. He is better for longer sessions than short bursts."
+  },
+  {
+    name:"Saitama",
+    rarity:"common",
+    strength:10,
+    use:"rng",
+    passive:"5% chance for +50 strength.",
+    explanation:"Saitama is a luck-based strength card. Most trash actions will be normal, but occasionally he gives a strong bonus.",
+    path:"Use Saitama if you like random strength spikes. He is less consistent than Rimuru, Dimple, or Naruto."
+  },
+  {
+    name:"Tanjiro",
+    rarity:"common",
+    strength:10,
+    use:"coin",
+    passive:"Common trash gives 35% coins back. Rare+ gives more coins but less strength.",
+    explanation:"Tanjiro is an economy-focused card. He gives better coin recovery from Common trash and gives stronger coin value from Rare or higher trash, but at the cost of less strength.",
+    path:"Use Tanjiro if your main goal is rolling more often. He is good for players who care about coin flow over fast strength growth."
+  },
+  {
+    name:"Reigen",
+    rarity:"common",
+    strength:10,
+    use:"coin",
+    passive:"20% chance trash gives +50 coins instead of strength.",
+    explanation:"Reigen sometimes turns a trash action into a coin reward instead of a strength reward. This creates a hybrid economy playstyle.",
+    path:"Use Reigen if you want occasional coin bursts while still playing normally."
+  },
+  {
+    name:"Dimple",
+    rarity:"common",
+    strength:10,
+    use:"strength",
+    passive:"+10 strength per dust.",
+    explanation:"Dimple gives a simple +10 strength every time you trash a card. No luck and no complicated conditions.",
+    path:"Use Dimple if you want safe, steady strength growth early."
+  },
+  {
+    name:"Usopp",
+    rarity:"common",
+    strength:10,
+    use:"duplicate",
+    passive:"-1 dust, stronger duplicate upgrades.",
+    explanation:"Usopp weakens normal trash value but improves duplicate upgrades. Since duplicates require rolling the exact same equipped card, this is a risky jackpot card.",
+    path:"Use Usopp only if you enjoy chasing rare duplicate hits. He is not meant to be a consistent farming card."
+  },
+  {
+    name:"Chopper",
+    rarity:"common",
+    strength:10,
+    use:"coin",
+    passive:"30% roll refund.",
+    explanation:"Chopper has a chance to refund rolls, helping your coins last longer.",
+    path:"Use Chopper when you are low on coins or want longer rolling sessions."
+  },
+  {
+    name:"Brook",
+    rarity:"common",
+    strength:10,
+    use:"roll",
+    passive:"Common -5%, Rare +3%, Epic +1.5%, God +0.5%.",
+    explanation:"Brook slightly lowers Common odds and slightly increases higher rarity odds. He improves roll quality over time.",
+    path:"Use Brook if you want to escape Common-heavy rolling and chase better cards."
+  },
+  {
+    name:"Franky",
+    rarity:"common",
+    strength:10,
+    use:"roll",
+    passive:"Common -6%, Epic +3%, God +1%.",
+    explanation:"Franky pushes rolls away from Common and toward Epic or God hits. He is a chase card, not a strength farmer.",
+    path:"Use Franky if your goal is finding high rarity cards instead of farming strength directly."
+  },
+  {
+    name:"Nami",
+    rarity:"common",
+    strength:10,
+    use:"coin",
+    passive:"Trash gives +15 coins instead of strength.",
+    explanation:"Nami turns trashing into coin gain instead of strength gain. She is a pure economy card.",
+    path:"Use Nami when your main goal is getting more coins for more rolls."
+  },
+  {
+    name:"Rimuru",
+    rarity:"common",
+    strength:10,
+    use:"strength",
+    passive:"+40 strength per dust.",
+    explanation:"Rimuru gives a large consistent strength reward every time you trash a card. This makes him one of the strongest non-God strength cards.",
+    path:"Use Rimuru for fast strength farming. He is very strong early and can stay useful into mid game."
+  },
 
-{name:"Goku",rarity:"rare",strength:30,passive:"Goku doubles duplicate upgrade gains. If you are using duplicate upgrades to grow, Goku makes those upgrades much more valuable.",path:"Best for duplicate farming. Keep rolling and upgrading repeated cards for faster strength scaling."},
-{name:"Vegeta",rarity:"rare",strength:30,passive:"Vegeta gives a bonus when your equipped card is weaker than the card you rolled. This helps players catch up when they are behind.",path:"Good transition card. Use Vegeta when moving from weak early cards into stronger Rare or Epic cards."},
-{name:"Gohan",rarity:"rare",strength:30,passive:"No passive.",path:"Solid Rare base strength, but replace when you find a Rare with a useful passive or any strong Epic."},
-{name:"Yuji",rarity:"rare",strength:30,passive:"No passive.",path:"Use as a basic Rare upgrade over Common cards."},
-{name:"Light Yagami",rarity:"rare",strength:30,passive:"Light gets better value from trashing higher-rarity cards. The stronger the rarity you are willing to trash, the more useful he becomes.",path:"Good for mid-game players who roll often and are willing to trash cards they do not need."},
-{name:"Guts",rarity:"rare",strength:30,passive:"No passive.",path:"Basic Rare strength card. Good temporary equip until better passive cards appear."},
-{name:"Ifrit",rarity:"rare",strength:30,passive:"No passive.",path:"Use as a simple Rare power bump."},
-{name:"Denji",rarity:"rare",strength:30,passive:"When you trash a card, Denji has a 50% chance to refund coins. This makes rolling sessions last longer.",path:"Great coin efficiency card. Use Denji if you want to farm rolls without losing coins too quickly."},
-{name:"Gaara",rarity:"rare",strength:30,passive:"No passive.",path:"Basic Rare card. Replace when you get a better passive or higher rarity."},
-{name:"Ace",rarity:"rare",strength:30,passive:"No passive.",path:"Good early Rare equip, but not a long-term farming card."},
-{name:"Killua",rarity:"rare",strength:30,passive:"Killua gives +1 coin per roll. It is a small bonus, but it adds up over long rolling sessions.",path:"Use for slow and steady coin gain while rolling a lot."},
-{name:"Gon",rarity:"rare",strength:30,passive:"Every time you trash a card, Gon gives +20 strength.",path:"Reliable Rare leveling card. Use Gon if you want consistent strength growth without depending on luck."},
-{name:"Subaru",rarity:"rare",strength:30,passive:"Every other time you trash a card, Subaru gives a -5 penalty. This makes him risky and less efficient for trash-heavy play.",path:"Challenge card. Not ideal for farming unless another system makes him useful later."},
-{name:"Doflamingo",rarity:"rare",strength:30,passive:"No passive.",path:"Basic Rare card. Use temporarily, then replace with a stronger passive card."},
+  {
+    name:"Goku",
+    rarity:"rare",
+    strength:30,
+    use:"duplicate",
+    passive:"Double duplicate boost.",
+    explanation:"Goku doubles the duplicate boost when you roll another Goku while Goku is equipped. This only works with exact Goku duplicates.",
+    path:"Use Goku as a rare jackpot card. He is not consistent, but duplicate hits are stronger."
+  },
+  {
+    name:"Vegeta",
+    rarity:"rare",
+    strength:30,
+    use:"strength",
+    passive:"Bonus strength if weaker than rolled card.",
+    explanation:"Vegeta helps you catch up when you roll a card stronger than your current power. He rewards upward progression.",
+    path:"Use Vegeta when you are trying to climb from weaker cards into stronger ones."
+  },
+  {
+    name:"Gohan",
+    rarity:"rare",
+    strength:30,
+    use:"duplicate",
+    passive:"Every 2 duplicates gives +50 bonus strength.",
+    explanation:"Gohan rewards exact duplicate hits. Every two Gohan duplicates gives an extra strength bonus.",
+    path:"Use Gohan if you like rare jackpot progression. He is not reliable, but he can spike when duplicates happen."
+  },
+  {
+    name:"Yuji",
+    rarity:"rare",
+    strength:30,
+    use:"roll",
+    passive:"3% chance to roll Sukuna.",
+    explanation:"Yuji has a special chance to force or find Sukuna. He is designed as a chase card for one specific God.",
+    path:"Use Yuji if your main goal is hunting Sukuna."
+  },
+  {
+    name:"Light Yagami",
+    rarity:"rare",
+    strength:30,
+    use:"strength",
+    passive:"Bonus strength based on rolled card rarity.",
+    explanation:"Light gets better strength value depending on the rarity of the card you trash. Higher rarity cards give better rewards.",
+    path:"Use Light if you roll often and are willing to trash higher rarity cards for strength."
+  },
+  {
+    name:"Guts",
+    rarity:"rare",
+    strength:30,
+    use:"roll",
+    passive:"3% chance to roll Griffith.",
+    explanation:"Guts has a special chance to find Griffith. He is a chase card for one specific God.",
+    path:"Use Guts if your goal is specifically to hunt Griffith."
+  },
+  {
+    name:"Ifrit",
+    rarity:"rare",
+    strength:30,
+    use:"strength",
+    passive:"Every trash +5 strength, 10% chance for +30 instead.",
+    explanation:"Ifrit gives a small guaranteed strength bonus with a chance for a stronger hit.",
+    path:"Use Ifrit if you want reliable strength with occasional lucky boosts."
+  },
+  {
+    name:"Denji",
+    rarity:"rare",
+    strength:30,
+    use:"coin",
+    passive:"30% roll refund.",
+    explanation:"Denji can refund rolls, making your coin supply last longer across rolling sessions.",
+    path:"Use Denji for economy and long rolling sessions."
+  },
+  {
+    name:"Gaara",
+    rarity:"rare",
+    strength:30,
+    use:"coin",
+    passive:"Trash gives +10 coins and +3 strength.",
+    explanation:"Gaara gives both coins and strength on trash actions. He is balanced and consistent.",
+    path:"Use Gaara if you want steady hybrid progression."
+  },
+  {
+    name:"Ace",
+    rarity:"rare",
+    strength:30,
+    use:"rng",
+    passive:"15% chance trash gives +40 instead.",
+    explanation:"Ace has a chance to turn a trash action into a better strength reward.",
+    path:"Use Ace if you like luck-based strength bursts."
+  },
+  {
+    name:"Killua",
+    rarity:"rare",
+    strength:30,
+    use:"coin",
+    passive:"+1 coin per roll.",
+    explanation:"Killua gives a small coin bonus every roll. It is small, but it adds up if you roll a lot.",
+    path:"Use Killua for long-term passive coin gain."
+  },
+  {
+    name:"Gon",
+    rarity:"rare",
+    strength:30,
+    use:"strength",
+    passive:"+20 strength per dust.",
+    explanation:"Gon gives reliable strength every time you trash a card.",
+    path:"Use Gon as a simple Rare strength farmer."
+  },
+  {
+    name:"Subaru",
+    rarity:"rare",
+    strength:30,
+    use:"rng",
+    passive:"Every other dust gives -5 instead of +5.",
+    explanation:"Subaru has a downside where every other trash action gives negative value instead of positive value.",
+    path:"Use Subaru as a challenge or special build card. He is not a normal farming choice."
+  },
+  {
+    name:"Doflamingo",
+    rarity:"rare",
+    strength:30,
+    use:"roll",
+    passive:"Can only roll One Piece characters, rarity odds unchanged.",
+    explanation:"Doflamingo narrows the card pool to One Piece characters without improving rarity odds.",
+    path:"Use Doflamingo if you are hunting specific One Piece cards."
+  },
 
-{name:"Kakashi",rarity:"epic",strength:80,passive:"No passive.",path:"Strong Epic base strength. Good upgrade if you are coming from Common or Rare cards."},
-{name:"Itachi",rarity:"epic",strength:80,passive:"No passive.",path:"Strong base power card. Use until you find an Epic with a passive or a God card."},
-{name:"Madara",rarity:"epic",strength:80,passive:"No passive.",path:"High base strength. Great mid-game equip."},
-{name:"Gojo",rarity:"epic",strength:80,passive:"No passive.",path:"Strong Epic option for climbing power quickly."},
-{name:"Ichigo",rarity:"epic",strength:80,passive:"No passive.",path:"Good mid-game strength card. Replace with God rarity later."},
-{name:"Ryuk",rarity:"epic",strength:80,passive:"No passive.",path:"Solid Epic card with strong base power."},
-{name:"Zoro",rarity:"epic",strength:80,passive:"No passive.",path:"Good Epic card for players who need a clean strength upgrade."},
-{name:"Hisoka",rarity:"epic",strength:80,passive:"No passive.",path:"Useful mid-game equip because of high base strength."},
+  {
+    name:"Kakashi",
+    rarity:"epic",
+    strength:80,
+    use:"coin",
+    passive:"Trash gives +25 coins and +5 strength.",
+    explanation:"Kakashi gives both coin and strength rewards from trashing. He is a balanced Epic.",
+    path:"Use Kakashi for stable mid-game progression."
+  },
+  {
+    name:"Itachi",
+    rarity:"epic",
+    strength:80,
+    use:"roll",
+    passive:"Every 4th roll is Rare or better.",
+    explanation:"Itachi improves roll quality by guaranteeing that every fourth roll is at least Rare.",
+    path:"Use Itachi if you want smoother rolling and fewer bad streaks."
+  },
+  {
+    name:"Madara",
+    rarity:"epic",
+    strength:80,
+    use:"coin",
+    passive:"Trash gives +60 coins and +10 strength, every 3rd trash gives +120 coins.",
+    explanation:"Madara is a powerful economy Epic. He gives strong coin rewards while still giving some strength.",
+    path:"Use Madara to farm coins fast while still gaining strength."
+  },
+  {
+    name:"Gojo",
+    rarity:"epic",
+    strength:80,
+    use:"strength",
+    passive:"Common dust +20 strength, Rare/Epic dust 0, God dust -50.",
+    explanation:"Gojo is strong when trashing Commons, neutral when trashing Rares or Epics, and punishing when trashing Gods.",
+    path:"Use Gojo if you are mostly trashing Commons. Avoid trashing God cards while using him."
+  },
+  {
+    name:"Ichigo",
+    rarity:"epic",
+    strength:80,
+    use:"roll",
+    passive:"Every 5th card is Rare or better.",
+    explanation:"Ichigo improves roll quality by making every fifth card at least Rare.",
+    path:"Use Ichigo for consistent access to better rarity cards."
+  },
+  {
+    name:"Ryuk",
+    rarity:"epic",
+    strength:80,
+    use:"coin",
+    passive:"Trash gives -50 strength but +150 coins.",
+    explanation:"Ryuk sacrifices strength for large coin gains. He is risky but great for economy.",
+    path:"Use Ryuk when you are willing to lose strength temporarily to farm lots of coins."
+  },
+  {
+    name:"Zoro",
+    rarity:"epic",
+    strength:80,
+    use:"strength",
+    passive:"Every 10th action gives +100 strength.",
+    explanation:"Zoro rewards activity. Every tenth action gives a strength burst.",
+    path:"Use Zoro if you are constantly rolling, keeping, and trashing."
+  },
+  {
+    name:"Hisoka",
+    rarity:"epic",
+    strength:80,
+    use:"rng",
+    passive:"20% chance to double strength, 30% chance to halve strength.",
+    explanation:"Hisoka changes strength gains with RNG. Sometimes he doubles them, sometimes he cuts them.",
+    path:"Use Hisoka if you enjoy risky, unpredictable results."
+  },
 
-{name:"Zoro & Sanji",rarity:"god",strength:150,passive:"When you trash a card, Zoro & Sanji give a powerful +50 strength bonus. This makes every dust-button action much more valuable.",path:"Amazing leveling card. Use when your goal is gaining strength fast from trashing unwanted rolls."},
-{name:"Sukuna",rarity:"god",strength:150,passive:"Sukuna doubles duplicate upgrade boosts, but has weaker value when trashing cards. This makes him better for duplicate upgrading than trash farming.",path:"Best for duplicate-focused progression. Keep rolling for copies and use upgrades to climb power."},
-{name:"Mob",rarity:"god",strength:150,passive:"Mob’s trashing bonus scales higher each time, meaning he gets stronger the more you keep using the dust button over time.",path:"Best long-term leveling card. Use Mob if you plan to grind for a long time."},
-{name:"Griffith",rarity:"god",strength:150,passive:"Griffith gets huge bonuses from trashing high-rarity cards. He rewards risky choices where you trash valuable cards instead of keeping them.",path:"Best for advanced players with lots of coins. Use when you can afford to trash Rare, Epic, or extra God cards for huge growth."},
-{name:"Veldora",rarity:"god",strength:150,passive:"Veldora gives +25 strength when trashing cards and also makes God duplicate upgrades worth +500 instead of the normal +300.",path:"Excellent late-game card. Use Veldora if you want a mix of trashing strength and massive God duplicate upgrades."},
-{name:"God Usopp",rarity:"god",strength:150,passive:"God Usopp has a chance to give +300 strength when trashing a card. It is luck-based, but the reward is extremely high.",path:"Best high-risk high-reward card. Use if you like gambling for huge strength jumps."}
+  {
+    name:"Zoro & Sanji",
+    rarity:"god",
+    strength:150,
+    use:"strength",
+    passive:"+50 strength per dust.",
+    explanation:"Zoro & Sanji give a strong flat strength reward every time you trash a card.",
+    path:"Use Zoro & Sanji for simple, powerful God-tier strength farming."
+  },
+  {
+    name:"Sukuna",
+    rarity:"god",
+    strength:150,
+    use:"duplicate",
+    passive:"Double duplicate boost, weaker dust gain.",
+    explanation:"Sukuna doubles Sukuna duplicate boosts but has weaker normal trash gains. He is a jackpot duplicate card.",
+    path:"Use Sukuna if you want rare but huge duplicate moments. He is not the best normal trash farmer."
+  },
+  {
+    name:"Mob",
+    rarity:"god",
+    strength:150,
+    use:"strength",
+    passive:"Dust gain increases over time.",
+    explanation:"Mob gets stronger the longer you keep using trash actions. His scaling makes him one of the best long-term cards.",
+    path:"Use Mob for long grinding sessions and long-term strength scaling."
+  },
+  {
+    name:"Griffith",
+    rarity:"god",
+    strength:150,
+    use:"strength",
+    passive:"Huge bonus from high rarity dust.",
+    explanation:"Griffith rewards trashing high rarity cards. The better the card you trash, the stronger the reward.",
+    path:"Use Griffith if you are rich enough to trash Rare, Epic, or extra God cards for massive bonuses."
+  },
+  {
+    name:"Veldora",
+    rarity:"god",
+    strength:150,
+    use:"duplicate",
+    passive:"+25 strength per dust, +500 on God duplicates.",
+    explanation:"Veldora gives steady strength from trashing and makes God duplicate hits extremely powerful.",
+    path:"Use Veldora for late-game jackpot scaling and solid normal strength farming."
+  },
+  {
+    name:"God Usopp",
+    rarity:"god",
+    strength:150,
+    use:"rng",
+    passive:"2% chance for +200 dust.",
+    explanation:"God Usopp has a very small chance to create a huge strength burst when trashing.",
+    path:"Use God Usopp if you like rare jackpot RNG effects."
+  }
 ];
 
-let rwCurrent = "all";
+let rarityFilter = "all";
+let useFilter = "all";
 
-function rwRender(){
-  const box = document.getElementById("rwCards");
-  const search = document.getElementById("rwSearch").value.toLowerCase();
-  box.innerHTML = "";
-
-  rwCharacters
-    .filter(c => rwCurrent === "all" || c.rarity === rwCurrent)
-    .filter(c => c.name.toLowerCase().includes(search))
-    .forEach(c=>{
-      box.innerHTML += `
-        <div class="rw-card ${c.rarity}" onclick="rwOpen(${rwCharacters.indexOf(c)})">
-          <h3>${c.name}</h3>
-          <small>${c.rarity.toUpperCase()} / Base Strength ${c.strength}</small>
-          <br><span class="rw-tag">Tap for passive guide</span>
-        </div>
-      `;
-    });
+function useLabel(use){
+  if(use === "coin") return "Coin Farming";
+  if(use === "strength") return "Strength Farming";
+  if(use === "roll") return "Roll Control";
+  if(use === "duplicate") return "Duplicate Jackpot";
+  if(use === "rng") return "RNG Burst";
+  return "General";
 }
 
-function rwFilter(type){
-  rwCurrent = type;
-  rwRender();
+function renderCards(){
+  const grid = document.getElementById("cardGrid");
+  const search = document.getElementById("searchInput").value.toLowerCase().trim();
+
+  const filtered = characters
+    .filter(c => rarityFilter === "all" || c.rarity === rarityFilter)
+    .filter(c => useFilter === "all" || c.use === useFilter)
+    .filter(c => c.name.toLowerCase().includes(search));
+
+  grid.innerHTML = "";
+
+  if(filtered.length === 0){
+    grid.innerHTML = '<div class="empty">No cards match that search/filter.</div>';
+    return;
+  }
+
+  filtered.forEach(c=>{
+    const index = characters.indexOf(c);
+    grid.innerHTML += `
+      <div class="char-card ${c.rarity}" onclick="openCard(${index})">
+        <h3>${c.name}</h3>
+        <small><span class="rarity-word">${c.rarity.toUpperCase()}</span> / Base Strength ${c.strength}</small>
+        <br>
+        <span class="card-use">${useLabel(c.use)}</span>
+      </div>
+    `;
+  });
 }
 
-function rwSearchCards(){
-  rwRender();
+function setRarity(type, btn){
+  rarityFilter = type;
+  document.querySelectorAll("#rarityButtons .btn").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  renderCards();
 }
 
-function rwOpen(index){
-  const c = rwCharacters[index];
+function setUse(type, btn){
+  useFilter = type;
+  document.querySelectorAll("#useButtons .btn").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  renderCards();
+}
 
-  const modalCard = document.getElementById("rwModalCard");
-  modalCard.className = "rw-modal-card " + c.rarity;
+function openCard(index){
+  const c = characters[index];
+  const modal = document.getElementById("cardModal");
+  const card = document.getElementById("modalCard");
 
-  document.getElementById("rwModalName").innerText = "✦ " + c.name;
+  card.className = "modal-card " + c.rarity;
 
-  document.getElementById("rwModalBody").innerHTML = `
-    <div class="rw-modal-rarity">${c.rarity}</div>
-    <div class="rw-modal-strength">Base Strength: <b>${c.strength}</b></div>
+  document.getElementById("modalName").innerText = "✦ " + c.name;
+  document.getElementById("modalBody").innerHTML = `
+    <div class="modal-meta ${c.rarity === "god" ? "gold" : c.rarity === "epic" ? "purple" : c.rarity === "rare" ? "blue" : ""}">
+      ${c.rarity.toUpperCase()} / Base Strength ${c.strength}
+    </div>
 
-    <div class="rw-detail">
-      <h3 class="rw-passive-title">✦ PASSIVE EXPLANATION</h3>
+    <div class="modal-detail">
+      <h3 class="purple">✦ Passive</h3>
       <p>${c.passive}</p>
     </div>
 
-    <div class="rw-detail">
-      <h3 class="rw-path-title">♜ SUGGESTED PATHWAY</h3>
+    <div class="modal-detail">
+      <h3 class="blue">☼ What It Actually Does</h3>
+      <p>${c.explanation}</p>
+    </div>
+
+    <div class="modal-detail">
+      <h3 class="green">♜ Suggested Pathway</h3>
       <p>${c.path}</p>
     </div>
 
-    <div class="rw-detail">
-      <h3 class="rw-used-title">☼ BEST USED FOR</h3>
-      <span class="rw-pill">${rwBestUse(c)}</span>
+    <div class="modal-detail">
+      <h3 class="red">▰ Best Used For</h3>
+      <p><b>${useLabel(c.use)}</b></p>
     </div>
 
-    <div class="rw-detail">
-      <h3 class="rw-style-title">▰ PLAYSTYLE FIT</h3>
-      <p>${rwPlaystyle(c)}</p>
-    </div>
-
-    <button class="rw-modal-close-btn" onclick="rwClose()">CLOSE</button>
+    <button class="close-btn" onclick="closeModal()">CLOSE</button>
   `;
 
-  document.getElementById("rwModal").style.display = "block";
+  modal.style.display = "block";
 }
 
-function rwBestUse(c){
-  if(c.name === "Nami" || c.name === "Reigen" || c.name === "Denji" || c.name === "Killua" || c.name === "Chopper"){
-    return "COIN FARMING";
-  }
-  if(c.name === "Sukuna" || c.name === "Goku" || c.name === "Veldora" || c.name === "Usopp"){
-    return "DUPLICATE UPGRADES";
-  }
-  if(c.name === "Mob" || c.name === "Zoro & Sanji" || c.name === "Rimuru" || c.name === "Gon" || c.name === "Dimple"){
-    return "LEVELING UP FAST";
-  }
-  if(c.rarity === "god"){
-    return "LATE GAME POWER";
-  }
-  if(c.rarity === "epic"){
-    return "MID GAME POWER";
-  }
-  return "EARLY GAME";
+function closeModal(){
+  document.getElementById("cardModal").style.display = "none";
 }
 
-function rwPlaystyle(c){
-  if(c.name === "Nami" || c.name === "Reigen" || c.name === "Denji" || c.name === "Killua" || c.name === "Chopper"){
-    return "Coin-Focused / Long Rolling Sessions / Fast Progression";
-  }
-  if(c.name === "Sukuna" || c.name === "Goku" || c.name === "Veldora" || c.name === "Usopp"){
-    return "Duplicate-Focused / Upgrade Farming / Long-Term Scaling";
-  }
-  if(c.name === "Mob" || c.name === "Zoro & Sanji" || c.name === "Rimuru" || c.name === "Gon" || c.name === "Dimple"){
-    return "High Activity / Trash-Focused / Strength Farming";
-  }
-  if(c.rarity === "god"){
-    return "Late Game / High Power / Rare Card Chasing";
-  }
-  return "Basic Progression / Temporary Equip / Early Power";
+function toggleFaq(el){
+  const answer = el.nextElementSibling;
+  answer.style.display = answer.style.display === "block" ? "none" : "block";
 }
 
-function rwClose(){
-  document.getElementById("rwModal").style.display = "none";
-}
+window.onclick = function(e){
+  const modal = document.getElementById("cardModal");
+  if(e.target === modal){
+    closeModal();
+  }
+};
 
-function rwToggle(el){
-  const a = el.nextElementSibling;
-  a.style.display = a.style.display === "block" ? "none" : "block";
-}
-
-rwRender();
+renderCards();
 </script>
+</body>
+</html>
